@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "92579967657",
+    "firebase_url": "https://gnote-25b5c.firebaseio.com",
+    "project_id": "gnote-25b5c",
+    "storage_bucket": "gnote-25b5c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:92579967657:android:021bab7b27e17f27b6efb8",
+        "android_client_info": {
+          "package_name": "com.fawcis.google_notes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "92579967657-l5origaibravrrvc5dt3ik24dpetkcvn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDl7_Kt_Kqqklkl-lj--vOmL8AZ3-HO0GQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "92579967657-l5origaibravrrvc5dt3ik24dpetkcvn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

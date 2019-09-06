@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_notes/custom_widgets/input_box.dart';
+import 'package:google_notes/custom_widgets/button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
@@ -26,24 +27,22 @@ class _SubjectsPageState extends State<SubjectsPage> {
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
                 return Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(
+                    backgroundColor: Colors.blueGrey,
+                  ),
                 );
               }
               var notes = snapshot.data.documents;
-              return Column(
-                children: <Widget>[
-                  ListView.builder(
-                    itemCount: notes.length,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onLongPress: () {},
-                        child: ListTile(
-                          title: Text('${notes[index].data['note']}'),
-                        ),
-                      );
-                    },
-                  ),
-                ],
+              return ListView.builder(
+                itemCount: notes.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onLongPress: () {},
+                    child: ListTile(
+                      title: Text(''),
+                    ),
+                  );
+                },
               );
             },
           ),
@@ -51,17 +50,27 @@ class _SubjectsPageState extends State<SubjectsPage> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: Text('Add Subject'),
-                    content: subjectBox,
-                  );
-                });
-            _fireStore
-                .collection('subjects')
-                .document(subjectBox.input)
-                .setData({});
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text('Add Subject'),
+                  content: ListView(
+                    children: <Widget>[
+                      subjectBox,
+                      Button(
+                        text: 'ADD',
+                        onPressed: () {
+                          _fireStore
+                              .collection('subjects')
+                              .document(subjectBox.input)
+                              .setData({});
+                        },
+                      )
+                    ],
+                  ),
+                );
+              },
+            );
           },
           child: Icon(Icons.add),
         ),

@@ -24,10 +24,10 @@ class InputBox extends StatelessWidget {
           filled: true,
           fillColor: kInputBoxColor,
           alignLabelWithHint: true,
-
+          border:
         ),
         style: kInputBoxInputTextStyle,
-        maxLines: 1,
+        maxLines: 3,
         onChanged: (val) {
           input = val;
         },

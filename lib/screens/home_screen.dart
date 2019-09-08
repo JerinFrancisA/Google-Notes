@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class NotesPage extends StatefulWidget {
   static const routeName = 'NotesPage';
@@ -84,13 +85,17 @@ class _NotesPageState extends State<NotesPage> {
               context: context,
               builder: (context) {
                 return AlertDialog(
-                  title: Text(
-                    'Add Note\nKeep the notes short !',
+                  title: TypewriterAnimatedTextKit(
+                    text: ['Add Note', 'Keep the note short !'],
                     textAlign: TextAlign.left,
+                    duration: Duration(seconds: 12),
                   ),
-                  content: ListView(
+                  content: Column(
                     children: <Widget>[
-                      subjectBox,
+                      Expanded(
+                        flex: 4,
+                        child: Center(child: subjectBox),
+                      ),
                       Button(
                         text: 'ADD',
                         onPressed: () {

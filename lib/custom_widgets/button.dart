@@ -24,7 +24,7 @@ class Button extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(66.0),
             shape: BoxShape.rectangle,
-            color: kRedColor,
+            color: kRedColor
           ),
           width: double.infinity,
         ),

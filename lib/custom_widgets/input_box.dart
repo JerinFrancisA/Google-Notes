@@ -12,7 +12,7 @@ class InputBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(4.0),
       child: TextField(
         textCapitalization: textCapitalization ?? TextCapitalization.none,
         decoration: InputDecoration(
@@ -24,7 +24,9 @@ class InputBox extends StatelessWidget {
           filled: true,
           fillColor: kInputBoxColor,
           alignLabelWithHint: true,
-          border:
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
         ),
         style: kInputBoxInputTextStyle,
         maxLines: 3,

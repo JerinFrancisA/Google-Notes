@@ -72,6 +72,7 @@ class _NotesPageState extends State<NotesPage> {
                           });
                         },
                       ),
+                      isThreeLine: true,
                     ),
                   );
                 },

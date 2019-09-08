@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-const kInputBoxColor = Color(0xCC141518);
-const kButtonColor = Color(0xFF141518);
+const kInputBoxColor = Colors.black;
+const kButtonColor = Colors.white;
 const kRedColor = Color(0xCCF43A2F);
 
 const kInputBoxStyle = TextStyle(

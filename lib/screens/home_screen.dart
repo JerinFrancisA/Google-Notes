@@ -45,16 +45,21 @@ class _NotesPageState extends State<NotesPage> {
                       subtitle: Text(
                         notes[index]['date'].toString(),
                       ),
-                      trailing: IconButton(
-                        icon: Icon(Icons.delete_outline),
-                        onPressed: () {
-                          setState(() {
-                            _fireStore
-                                .collection('subjects')
-                                .document(notes[index].documentID)
-                                .delete();
-                          });
-                        },
+                      trailing: Row(
+
+                        children: <Widget>[
+                          IconButton(
+                            icon: Icon(Icons.delete_outline),
+                            onPressed: () {
+                              setState(() {
+                                _fireStore
+                                    .collection('subjects')
+                                    .document(notes[index].documentID)
+                                    .delete();
+                              });
+                            },
+                          ),
+                        ],
                       ),
                     ),
                   );
@@ -76,7 +81,7 @@ class _NotesPageState extends State<NotesPage> {
                       Button(
                         text: 'ADD',
                         onPressed: () {
-                          _fireStore.collection('subjects').document().setData(
+                          _fireStore.collection('subjects').document(DateTime.now().millisecondsSinceEpoch.toString()).setData(
                             {
                               'note': subjectBox.input,
                               'date': DateTime.now().day.toString() +
@@ -86,6 +91,7 @@ class _NotesPageState extends State<NotesPage> {
                                   DateTime.now().year.toString(),
                             },
                           );
+                          Navigator.pop(context);
                         },
                       ),
                     ],

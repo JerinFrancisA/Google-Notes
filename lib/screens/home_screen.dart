@@ -4,6 +4,7 @@ import 'package:google_notes/custom_widgets/button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_web_browser/flutter_web_browser.dart';
 
 class NotesPage extends StatefulWidget {
   static const routeName = 'NotesPage';
@@ -43,12 +44,7 @@ class _NotesPageState extends State<NotesPage> {
                       leading: IconButton(
                         icon: Icon(FontAwesomeIcons.google),
                         onPressed: () {
-                          setState(() {
-                            _fireStore
-                                .collection('subjects')
-                                .document(notes[index].documentID)
-                                .delete();
-                          });
+                          FlutterWebBrowser.openWebPage(url: 'https://www.google.com/search?q=${notes[index]['note']}', androidToolbarColor: Colors.white);
                         },
                       ),
                       title: Text(

@@ -4,17 +4,17 @@ import 'package:google_notes/custom_widgets/button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
-class SubjectsPage extends StatefulWidget {
-  static const routeName = 'SubjectsPage';
+class NotesPage extends StatefulWidget {
+  static const routeName = 'NotesPage';
 
   @override
-  _SubjectsPageState createState() => _SubjectsPageState();
+  _NotesPageState createState() => _NotesPageState();
 }
 
-class _SubjectsPageState extends State<SubjectsPage> {
+class _NotesPageState extends State<NotesPage> {
   final _fireStore = Firestore.instance;
   bool showSpinner = false;
-  var subjectBox = InputBox(text: 'Subject', icon: Icon(Icons.library_books));
+  var subjectBox = InputBox(text: 'Note', icon: Icon(Icons.library_books));
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,23 @@ class _SubjectsPageState extends State<SubjectsPage> {
                   return GestureDetector(
                     onLongPress: () {},
                     child: ListTile(
-                      title: Text(''),
+                      title: Text(
+                        notes[index]['note'],
+                      ),
+                      subtitle: Text(
+                        notes[index]['date'].toString(),
+                      ),
+                      trailing: IconButton(
+                        icon: Icon(Icons.delete_outline),
+                        onPressed: () {
+                          setState(() {
+                            _fireStore
+                                .collection('subjects')
+                                .document(notes[index].documentID)
+                                .delete();
+                          });
+                        },
+                      ),
                     ),
                   );
                 },
@@ -53,19 +69,25 @@ class _SubjectsPageState extends State<SubjectsPage> {
               context: context,
               builder: (context) {
                 return AlertDialog(
-                  title: Text('Add Subject'),
+                  title: Text('Add Note'),
                   content: ListView(
                     children: <Widget>[
                       subjectBox,
                       Button(
                         text: 'ADD',
                         onPressed: () {
-                          _fireStore
-                              .collection('subjects')
-                              .document(subjectBox.input)
-                              .setData({});
+                          _fireStore.collection('subjects').document().setData(
+                            {
+                              'note': subjectBox.input,
+                              'date': DateTime.now().day.toString() +
+                                  '/' +
+                                  DateTime.now().month.toString() +
+                                  '/' +
+                                  DateTime.now().year.toString(),
+                            },
+                          );
                         },
-                      )
+                      ),
                     ],
                   ),
                 );

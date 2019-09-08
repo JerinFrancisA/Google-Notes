@@ -9,9 +9,9 @@ class HomeScreen extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Gnote',
-      initialRoute: SubjectsPage.routeName,
+      initialRoute: NotesPage.routeName,
       routes: {
-        SubjectsPage.routeName: (context) => SubjectsPage()
+        NotesPage.routeName: (context) => NotesPage()
       },
     );
   }

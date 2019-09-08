@@ -16,7 +16,11 @@ class NotesPage extends StatefulWidget {
 class _NotesPageState extends State<NotesPage> {
   final _fireStore = Firestore.instance;
   bool showSpinner = false;
-  var subjectBox = InputBox(text: 'Note', icon: Icon(Icons.library_books));
+  var subjectBox = InputBox(
+    text: 'Note',
+    hintText: 'Enter note here',
+    textCapitalization: TextCapitalization.words,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +48,10 @@ class _NotesPageState extends State<NotesPage> {
                       leading: IconButton(
                         icon: Icon(FontAwesomeIcons.google),
                         onPressed: () {
-                          FlutterWebBrowser.openWebPage(url: 'https://www.google.com/search?q=${notes[index]['note']}', androidToolbarColor: Colors.white);
+                          FlutterWebBrowser.openWebPage(
+                              url:
+                                  'https://www.google.com/search?q=${notes[index]['note']}',
+                              androidToolbarColor: Colors.white);
                         },
                       ),
                       title: Text(
@@ -77,7 +84,10 @@ class _NotesPageState extends State<NotesPage> {
               context: context,
               builder: (context) {
                 return AlertDialog(
-                  title: Text('Add Note'),
+                  title: Text(
+                    'Add Note\nKeep the notes short !',
+                    textAlign: TextAlign.left,
+                  ),
                   content: ListView(
                     children: <Widget>[
                       subjectBox,

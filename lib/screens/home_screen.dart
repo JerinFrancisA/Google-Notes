@@ -3,6 +3,7 @@ import 'package:google_notes/custom_widgets/input_box.dart';
 import 'package:google_notes/custom_widgets/button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class NotesPage extends StatefulWidget {
   static const routeName = 'NotesPage';
@@ -39,27 +40,33 @@ class _NotesPageState extends State<NotesPage> {
                   return GestureDetector(
                     onLongPress: () {},
                     child: ListTile(
+                      leading: IconButton(
+                        icon: Icon(FontAwesomeIcons.google),
+                        onPressed: () {
+                          setState(() {
+                            _fireStore
+                                .collection('subjects')
+                                .document(notes[index].documentID)
+                                .delete();
+                          });
+                        },
+                      ),
                       title: Text(
                         notes[index]['note'],
                       ),
                       subtitle: Text(
                         notes[index]['date'].toString(),
                       ),
-                      trailing: Row(
-
-                        children: <Widget>[
-                          IconButton(
-                            icon: Icon(Icons.delete_outline),
-                            onPressed: () {
-                              setState(() {
-                                _fireStore
-                                    .collection('subjects')
-                                    .document(notes[index].documentID)
-                                    .delete();
-                              });
-                            },
-                          ),
-                        ],
+                      trailing: IconButton(
+                        icon: Icon(Icons.delete_outline),
+                        onPressed: () {
+                          setState(() {
+                            _fireStore
+                                .collection('subjects')
+                                .document(notes[index].documentID)
+                                .delete();
+                          });
+                        },
                       ),
                     ),
                   );
@@ -81,7 +88,12 @@ class _NotesPageState extends State<NotesPage> {
                       Button(
                         text: 'ADD',
                         onPressed: () {
-                          _fireStore.collection('subjects').document(DateTime.now().millisecondsSinceEpoch.toString()).setData(
+                          _fireStore
+                              .collection('subjects')
+                              .document(DateTime.now()
+                                  .millisecondsSinceEpoch
+                                  .toString())
+                              .setData(
                             {
                               'note': subjectBox.input,
                               'date': DateTime.now().day.toString() +

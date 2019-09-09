@@ -50,9 +50,10 @@ class _NotesPageState extends State<NotesPage> {
                         icon: Icon(FontAwesomeIcons.google),
                         onPressed: () {
                           FlutterWebBrowser.openWebPage(
-                              url:
-                                  'https://www.google.com/search?q=${notes[index]['note']}',
-                              androidToolbarColor: Colors.white);
+                            url:
+                                'https://www.google.com/search?q=${notes[index]['note']}',
+                            androidToolbarColor: Colors.white,
+                          );
                         },
                       ),
                       title: Text(

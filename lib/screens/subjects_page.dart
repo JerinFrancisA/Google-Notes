@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_notes/custom_widgets/button.dart';
 import 'package:google_notes/custom_widgets/input_box.dart';
+import 'package:google_notes/screens/home_screen.dart';
 import 'package:google_notes/utilities/constants.dart';
 
 class SubjectsPage extends StatefulWidget {
@@ -34,9 +35,7 @@ class _SubjectsPageState extends State<SubjectsPage> {
   }
 
   Future<void> ll() async {
-    setState(() async {
-      len = int.parse(await getLen());
-    });
+    len = int.parse(await getLen());
     print(len);
   }
 
@@ -113,7 +112,16 @@ class _SubjectsPageState extends State<SubjectsPage> {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NotesPage(
+                                subject: allSubjects[index]['subject'],
+                              ),
+                            ),
+                          );
+                        },
                         onLongPress: () {
                           showDialog(
                             context: context,

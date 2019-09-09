@@ -206,12 +206,12 @@ class _SubjectsPageState extends State<SubjectsPage> {
                             decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
-                                    kBlueColor.withOpacity(0.7),
-                                    kBlueColor.withOpacity(0.8),
-                                    kBlueColor.withOpacity(0.9),
-                                    kBlueColor,
+                                    (index%4 == 0)?kRedColor.withOpacity(1.0):(index%4 == 1)?kGreenColor.withOpacity(1.0):(index%4 == 2)?kBlueColor.withOpacity(1.0):kYellowColor.withOpacity(1.0),
+                                    (index%4 == 0)?kRedColor.withOpacity(0.75):(index%4 == 1)?kGreenColor.withOpacity(0.75):(index%4 == 2)?kBlueColor.withOpacity(0.75):kYellowColor.withOpacity(0.75),
+                                    (index%4 == 0)?kRedColor.withOpacity(0.75):(index%4 == 1)?kGreenColor.withOpacity(0.75):(index%4 == 2)?kBlueColor.withOpacity(0.75):kYellowColor.withOpacity(0.75),
+                                    (index%4 == 0)?kRedColor.withOpacity(1.0):(index%4 == 1)?kGreenColor.withOpacity(1.0):(index%4 == 2)?kBlueColor.withOpacity(1.0):kYellowColor.withOpacity(1.0),
                                   ],
-                                  stops: [0.2, 0.4, 0.6, 0.9],
+                                  stops: [0.1, 0.4, 0.6, 0.9],
                                   begin: Alignment.topLeft,
                                   end: Alignment.bottomRight,
                                 ),

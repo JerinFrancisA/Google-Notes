@@ -46,7 +46,7 @@ class _NotesPageState extends State<NotesPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(widget.subject + 'Gnotes'),
+          title: Text(widget.subject),
           backgroundColor: Colors.black,
           centerTitle: true,
           automaticallyImplyLeading: false,

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -206,10 +208,36 @@ class _SubjectsPageState extends State<SubjectsPage> {
                             decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
-                                    (index%4 == 0)?kRedColor.withOpacity(1.0):(index%4 == 1)?kGreenColor.withOpacity(1.0):(index%4 == 2)?kBlueColor.withOpacity(1.0):kYellowColor.withOpacity(1.0),
-                                    (index%4 == 0)?kRedColor.withOpacity(0.75):(index%4 == 1)?kGreenColor.withOpacity(0.75):(index%4 == 2)?kBlueColor.withOpacity(0.75):kYellowColor.withOpacity(0.75),
-                                    (index%4 == 0)?kRedColor.withOpacity(0.75):(index%4 == 1)?kGreenColor.withOpacity(0.75):(index%4 == 2)?kBlueColor.withOpacity(0.75):kYellowColor.withOpacity(0.75),
-                                    (index%4 == 0)?kRedColor.withOpacity(1.0):(index%4 == 1)?kGreenColor.withOpacity(1.0):(index%4 == 2)?kBlueColor.withOpacity(1.0):kYellowColor.withOpacity(1.0),
+                                    (index % 4 == 0)
+                                        ? kRedColor.withOpacity(1.0)
+                                        : (index % 4 == 1)
+                                            ? kGreenColor.withOpacity(1.0)
+                                            : (index % 4 == 2)
+                                                ? kBlueColor.withOpacity(1.0)
+                                                : kYellowColor.withOpacity(1.0),
+                                    (index % 4 == 0)
+                                        ? kRedColor.withOpacity(0.75)
+                                        : (index % 4 == 1)
+                                            ? kGreenColor.withOpacity(0.75)
+                                            : (index % 4 == 2)
+                                                ? kBlueColor.withOpacity(0.75)
+                                                : kYellowColor
+                                                    .withOpacity(0.75),
+                                    (index % 4 == 0)
+                                        ? kRedColor.withOpacity(0.75)
+                                        : (index % 4 == 1)
+                                            ? kGreenColor.withOpacity(0.75)
+                                            : (index % 4 == 2)
+                                                ? kBlueColor.withOpacity(0.75)
+                                                : kYellowColor
+                                                    .withOpacity(0.75),
+                                    (index % 4 == 0)
+                                        ? kRedColor.withOpacity(1.0)
+                                        : (index % 4 == 1)
+                                            ? kGreenColor.withOpacity(1.0)
+                                            : (index % 4 == 2)
+                                                ? kBlueColor.withOpacity(1.0)
+                                                : kYellowColor.withOpacity(1.0),
                                   ],
                                   stops: [0.1, 0.4, 0.6, 0.9],
                                   begin: Alignment.topLeft,

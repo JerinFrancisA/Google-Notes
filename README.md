@@ -9,7 +9,7 @@ You can categorize the notes into categories to keep them organized.
 
 ## About Me
 
-Please checkout the dart package developed by [Me](https://github.com/JerinFrancisA) and [Fawaz Hussain](https://github.com/fawazhussain) HERE(https://pub.dev/packages/flutter_otp) 
+Please checkout the dart package developed by [Me](https://github.com/JerinFrancisA) and [Fawaz Hussain](https://github.com/fawazhussain) [HERE](https://pub.dev/packages/flutter_otp) 
 
 Make sure to :star: the repository if you find it useful and try out the dart package for sendinf/validating OTP [here](https://pub.dev/packages/flutter_otp) 
 

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,7 @@ import 'package:google_notes/custom_widgets/button.dart';
 import 'package:google_notes/custom_widgets/input_box.dart';
 import 'package:google_notes/screens/home_screen.dart';
 import 'package:google_notes/utilities/constants.dart';
+import 'package:google_notes/utilities/image_links.dart';
 
 class SubjectsPage extends StatefulWidget {
   static const routeName = 'SubjectsPage';
@@ -96,7 +99,7 @@ class _SubjectsPageState extends State<SubjectsPage> {
           child: GridView.count(
             crossAxisCount: 2,
             children: List.generate(
-              len,
+              len ?? 0,
               (index) {
                 return StreamBuilder(
                   stream: _fireStore.collection('subjectname').snapshots(),
@@ -242,12 +245,28 @@ class _SubjectsPageState extends State<SubjectsPage> {
                                   end: Alignment.bottomRight,
                                 ),
                                 borderRadius: BorderRadius.circular(8.0)),
-                            child: Center(
-                              child: Text(
-                                allSubjects[index]['subject'],
-                                style: kInputBoxInputTextStyle.copyWith(
-                                    color: Colors.white),
-                              ),
+                            child: Column(
+                              children: <Widget>[
+                                Expanded(
+                                  flex: 4,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(12.0),
+                                    child: Image(
+                                      image: NetworkImage(images[
+                                          Random().nextInt(images.length)]),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Text(
+                                    allSubjects[index]['subject'],
+                                    style: kInputBoxInputTextStyle.copyWith(
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),

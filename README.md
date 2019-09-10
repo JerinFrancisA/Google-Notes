@@ -1,10 +1,10 @@
-# google_notes
+# Gnote
 
 A flutter notes application
 
 # About 
 
-This application can be used to save important notes (GOOGLE Worthy notes) which you can refer to later from the Application itself !!!
+Gnote can be used to save important notes (GOOGLE Worthy notes) which you can refer to later from the Application itself !!!
 You can categorize the notes into categories to keep them organized. 
 
 ## About Me

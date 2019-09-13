@@ -23,7 +23,7 @@ Make sure to :star: the repository if you find it useful and try out the dart pa
 ![1](https://user-images.githubusercontent.com/43045825/64634732-975a6500-d41b-11e9-8945-2a46af883fc0.jpeg)
 ## 2
 ### Category Screen
-#### You can add many categories as you wish adn can delete them when not needed.
+#### You can add many categories as you wish and can delete them when not needed.
 ![2](https://user-images.githubusercontent.com/43045825/64634733-975a6500-d41b-11e9-82f7-1207d30d1376.jpeg)
 ## 3
 ### Add new category

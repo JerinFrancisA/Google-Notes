@@ -75,8 +75,8 @@ class _NotesPageState extends State<NotesPage> {
                                 _fireStore
                                     .collection('subjects')
                                     .document(DateTime.now()
-                                    .millisecondsSinceEpoch
-                                    .toString())
+                                        .millisecondsSinceEpoch
+                                        .toString())
                                     .setData(
                                   {
                                     'note': subjectBox.input,
@@ -130,11 +130,29 @@ class _NotesPageState extends State<NotesPage> {
                           );
                         },
                       ),
-                      title: Text(
-                        notes[index]['note'],
+                      title: GestureDetector(
+                        onTap: () {
+                          FlutterWebBrowser.openWebPage(
+                            url:
+                                'https://www.google.com/search?q=${notes[index]['note']}',
+                            androidToolbarColor: Colors.white,
+                          );
+                        },
+                        child: Text(
+                          notes[index]['note'],
+                        ),
                       ),
-                      subtitle: Text(
-                        notes[index]['date'].toString(),
+                      subtitle: GestureDetector(
+                        onTap: () {
+                          FlutterWebBrowser.openWebPage(
+                            url:
+                                'https://www.google.com/search?q=${notes[index]['note']}',
+                            androidToolbarColor: Colors.white,
+                          );
+                        },
+                        child: Text(
+                          notes[index]['date'].toString(),
+                        ),
                       ),
                       trailing: IconButton(
                         icon: Icon(Icons.delete_outline),

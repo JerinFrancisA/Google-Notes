@@ -9,6 +9,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
+import 'package:image_picker/image_picker.dart';
 
 class NotesPage extends StatefulWidget {
   static const routeName = 'NotesPage';
@@ -30,8 +31,15 @@ class _NotesPageState extends State<NotesPage> {
   );
   var len;
   var subjectNotes;
-  static final File imageFile = getImageFile();
-  static final FirebaseVisionImage visionImage = FirebaseVisionImage.fromFile(imageFile);
+
+  static File _image;
+  Future getImage() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    setState(() {
+      _image = image;
+    });
+  }
+  static final FirebaseVisionImage visionImage = FirebaseVisionImage.fromFile(_image);
   final TextRecognizer textRecognizer = FirebaseVision.instance.textRecognizer();
 
   @override
@@ -96,6 +104,10 @@ class _NotesPageState extends State<NotesPage> {
                                 );
                                 Navigator.pop(context);
                               },
+                            ),
+                            Button(
+                              text: 'ADD USING IMAGE',
+                              onPressed: getImage,
                             ),
                           ],
                         ),

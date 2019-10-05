@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_notes/custom_widgets/input_box.dart';
 import 'package:google_notes/custom_widgets/button.dart';
@@ -6,6 +8,7 @@ import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 
 class NotesPage extends StatefulWidget {
   static const routeName = 'NotesPage';
@@ -27,6 +30,9 @@ class _NotesPageState extends State<NotesPage> {
   );
   var len;
   var subjectNotes;
+  static final File imageFile = getImageFile();
+  static final FirebaseVisionImage visionImage = FirebaseVisionImage.fromFile(imageFile);
+  final TextRecognizer textRecognizer = FirebaseVision.instance.textRecognizer();
 
   @override
   Widget build(BuildContext context) {

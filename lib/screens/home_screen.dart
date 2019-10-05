@@ -33,14 +33,34 @@ class _NotesPageState extends State<NotesPage> {
   var subjectNotes;
 
   static File _image;
+  static final FirebaseVisionImage visionImage =
+      FirebaseVisionImage.fromFile(_image);
+  static final TextRecognizer textRecognizer =
+      FirebaseVision.instance.textRecognizer();
+  VisionText visionText;
+
   Future getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
     setState(() {
       _image = image;
     });
+    visionText = await textRecognizer.processImage(visionImage);
+    String text = visionText.text;
+    for (TextBlock block in visionText.blocks) {
+      final String text = block.text;
+      print(text);
+      final List<RecognizedLanguage> languages = block.recognizedLanguages;
+      print(languages);
+
+      for (TextLine line in block.lines) {
+        print(line);
+        for (TextElement element in line.elements) {
+          print(element);
+        }
+      }
+    }
+    print(text);
   }
-  static final FirebaseVisionImage visionImage = FirebaseVisionImage.fromFile(_image);
-  final TextRecognizer textRecognizer = FirebaseVision.instance.textRecognizer();
 
   @override
   Widget build(BuildContext context) {
